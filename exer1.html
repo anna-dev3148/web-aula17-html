@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadros</title>
+    <style>
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 160px);
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .caixa {
+            height: 80px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+    </style>
+    <script>
+        window.onload = inicio;
+        let destino;
+
+        function inicio() {
+            let itens = document.getElementsByTagName('main');
+            destino = itens[0];
+
+
+            let totalColunas = 10;
+
+            for (let colunas = 0; colunas < 3; colunas++) {
+                let texto = `Item: ${colunas + 1}`;
+                destino.innerHTML += novaCaixa(texto);
+            }
+
+            document.addEventListener("scroll", executa);
+            let botao = document.getElementById("botao");
+            botao.addEventListener("click", executa);  
+
+        }
+        function executa() {
+                let texto = `novo`;
+                destino.innerHTML += novaCaixa(texto);
+        }
+
+        function novaCaixa(conteudo) {
+            return `<div class="caixa">${conteudo}</div>`;
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+
+    </main>
+
+    <button id="botao">Add</button>
+</body>
+
+</html>
